@@ -7,6 +7,7 @@ import { InputField } from './InputField';
 import { Button } from './Button';
 import { useAppDispatch } from '../../hooks/TypesRedux';
 import { toastMsg } from '../../utils/toast';
+import { AuthLink } from './LoginOrRegistration';
 
 
 const schema = z.object({
@@ -38,7 +39,8 @@ export const RegisterForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto p-8 bg-white rounded-md shadow-md">
+    <div>
+      <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto p-8 bg-white rounded-md shadow-md">
       <h2 className="text-2xl font-bold mb-6">Register</h2>
       <InputField label="Name" {...register('name')} />
       {errors.name && <p className="text-red-500">{errors.name.message}</p>}
@@ -48,5 +50,8 @@ export const RegisterForm = () => {
       {errors.password && <p className="text-red-500">{errors.password.message}</p>}
       <Button type="submit" disabled={isLoading}>{isLoading ? 'Registering...' : 'Register'}</Button>
     </form>
+    <AuthLink to="/login">Already  have an account? <span className='text-blue-500 hover:underline'>Login</span></AuthLink>
+
+    </div>
   );
 };
