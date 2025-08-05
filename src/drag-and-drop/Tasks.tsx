@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import type { DataModel } from "./DataModel"
 import { taskData } from "./TaskData"
 /* 
@@ -23,13 +23,29 @@ export default function Tasks() {
         console.log(index)
         setDragIndex(index)
     }
-    
+    const handleDragOver =(e:React.DragEvent<HTMLLIElement>)=>{
+        // console.log("drag over")
+        e.preventDefault();
+    }
+    //swap data
+    const handleDragSwapData=(index:number)=>{
+        if(dragIndex===-1) return ;
+        const tempData=[...tasks];
+        // console.log(tempData)
+        const [curr]= tempData.splice(dragIndex,1);
+        // console.log(curr)
+        tempData.splice(index,0,curr);
+        setTasks(tempData)
+        setDragIndex(-1)
+    }
   return (
     <div>
     <h1 className="text-3xl my-6 font-bold ">Tasks...</h1>
     <ul>
       {tasks.map((task, index) => (
-        <li onDragStart={(e)=>handleDragStart(e,index)} key={task.id} draggable className="my-4">
+        <li onDragStart={(e)=>handleDragStart(e,index)} onDragOver={(e)=>handleDragOver(e)} 
+        onDrop={(e)=>handleDragSwapData(index)}
+        key={task.id} draggable className="my-4">
           {index + 1}. {task.title}
         </li>
       ))}
