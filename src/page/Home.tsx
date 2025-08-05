@@ -1,3 +1,4 @@
+import Tasks from "../drag-and-drop/Tasks";
 import TripTracker from "../test/TripTracker";
 import FileExplorer from "./FileExplorer";
 
@@ -7,6 +8,7 @@ export default function Home() {
         <h1>We all Test Our activities here </h1>
         <TripTracker/>
         <FileExplorer/>
+        <Tasks/>
     </div>
   )
 }

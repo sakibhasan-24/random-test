@@ -18,4 +18,5 @@ export const taskData:DataModel[]=[
         title:"Task 3",
         type:"dev"
     }
+    
 ]
