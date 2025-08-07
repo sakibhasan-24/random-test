@@ -26,4 +26,5 @@ export const groupData = (data: dataModel[]) => {
             result[index].items.push(item.name);
         }
    })
+   return result;
 }

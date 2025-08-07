@@ -1,5 +1,7 @@
 import Tasks from "../drag-and-drop/Tasks";
+import TestMemo from "../memo/TestMemo";
 import TripTracker from "../test/TripTracker";
+import Listings from "../transform-data/Listings";
 import FileExplorer from "./FileExplorer";
 
 export default function Home() {
@@ -9,6 +11,8 @@ export default function Home() {
         <TripTracker/>
         <FileExplorer/>
         <Tasks/>
+        <Listings/>
+        <TestMemo/>
     </div>
   )
 }
